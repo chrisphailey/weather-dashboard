@@ -1,0 +1,52 @@
+#title {
+    border: 5px solid red;
+}
+.search-title {
+    font-size: x-large;
+    font-weight: bolder;
+}
+.container {
+    width: 100%;
+}
+.row {
+    height: 30%;
+}
+#city-list {
+    list-style-type: none;
+    justify-content: center;
+}
+.city {
+    background-color: gray;
+    border-radius: 5px;
+}
+.city-selected {
+    font-size: x-large;
+    font-weight: bolder;
+}
+#forecast-container {
+    display: flex;
+}
+.card-wrapper {
+    border: 5px solid red;
+    color: white;
+    background-color: rgb(50, 50, 139);
+    margin: 0.5rem;
+}
+.date {
+    font-weight: bolder;
+}
+#title {
+    color: white;
+    background-image: linear-gradient(to right, rgb(65, 65, 199), rgb(27, 5, 126))
+}
+#search-btn {
+    color: white;
+    background-color: rgb(56, 108, 204);
+}
+#uv-index, #index-container {
+    display: inline-flex;
+}
+#index-container {
+    margin: 1rem;
+    color: white;
+}
