@@ -5,4 +5,4 @@ This application takes a city input and displays current weather as well as a 5 
 ## Screenshot
 ![Weather-Dashboard](./assets/Images/Weather-Dashboard.png)
 
-URL to Application: 
+URL to Application: chrisphailey.github.io/weather-dashboard/
