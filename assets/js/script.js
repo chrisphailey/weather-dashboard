@@ -121,3 +121,4 @@ document.getElementById("search-btn").addEventListener("click", currentForecast)
 document.getElementById("search-btn").addEventListener("click", populateNewCity)
 
 populateCities();
+console.log("hey Griffin :)")
