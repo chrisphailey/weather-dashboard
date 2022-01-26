@@ -19,22 +19,39 @@ var cityList = document.getElementById("city-list")
 var cityArray = []
 var cities = JSON.parse(localStorage.getItem("city"))
 
-
-function populateCities(){
 // populate historical cities
+function populateCities(){
 for(var i=0; i < cities.length; i++){
-            // create li for recently searched city
-            var historicalCity = document.createElement("li");
-            historicalCity.classList = "city list-inline-item w-100 text-center mt-2";
-            historicalCity.textContent = cities[i];
-            cityList.appendChild(historicalCity);
+    var historicalCity = document.createElement("li");
+    historicalCity.classList = "city list-inline-item w-100 text-center mt-2";
+    historicalCity.textContent = cities[i];
+    historicalCity.addEventListener("click", currentForecast)
+    cityList.appendChild(historicalCity);
 }
+}
+function populateNewCity(){
+    var cityInput = document.getElementById("city-input").value;
+    for(var i=0; i < cityList.children.length; i++){
+        if(cityInput === cityList.children[i].textContent){
+            console.log(cityInput, cityList.children[i])
+            return
+        }
+    }
+    var historicalCity = document.createElement("li");
+    historicalCity.classList = "city list-inline-item w-100 text-center mt-2";
+    historicalCity.textContent = cityInput;
+    cityList.appendChild(historicalCity);
 }
 
 // generate current forecast
-var currentForecast = function() {
-    // display city and date
+var currentForecast = function(e) {
+    if(document.getElementById("city-input").value){
     var cityInput = document.getElementById("city-input").value;
+    console.log(cityInput);
+    } else {
+        var cityInput = e.target.textContent;
+    }
+    // display city and date
     var currentDate = moment().format('l');
     document.getElementById("city-displayed").textContent = cityInput + " " + currentDate;
     var apiURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid=" + apiKey + "&units=imperial"
@@ -46,14 +63,11 @@ var currentForecast = function() {
         currentHumidity.textContent = "Humidity: " + data.main.humidity + "%";
         var lat = data.coord.lat;
         var lon = data.coord.lon;
-         // create li for recently searched city
-        var historicalCity = document.createElement("li");
-        historicalCity.classList = "city list-inline-item w-100 text-center mt-2";
-        historicalCity.textContent = cityInput;
-        cityList.appendChild(historicalCity);
         // add historical city to city array
         cityArray.push(cityInput);
         localStorage.setItem("city", JSON.stringify(cityArray));
+        // reset input
+        document.getElementById("city-input").value = "";
         futureForecast(lon, lat);
         });
     })
@@ -104,6 +118,6 @@ var futureForecast = function(lon, lat){
 
 // add event listener to search button
 document.getElementById("search-btn").addEventListener("click", currentForecast)
-document.getElementById("search-btn").addEventListener("click", currentForecast)
+document.getElementById("search-btn").addEventListener("click", populateNewCity)
 
 populateCities();
