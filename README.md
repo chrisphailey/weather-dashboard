@@ -3,9 +3,9 @@
 This application takes a city input and displays current weather as well as a 5 day weather forecast.
 
 ## Technologies
--HTML
--CSS
--Javascript
+1. HTML
+2. CSS
+3. Javascript
 
 ## License
 ![license badge](https://img.shields.io/badge/license-MIT-brightgreen)
